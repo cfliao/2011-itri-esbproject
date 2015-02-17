@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<project name="cxf-ws-template" basedir="." default="genWSDL">
+
+	<property name="ws-service-class-name" value="tw.org.itri.smx.ws.CalculatorImpl" />
+	<property name="jdk-path" value="C:/Program Files/Java/jdk1.6.0_11" />
+
+	<path id="cxf.classpath">
+		<fileset dir="lib" includes="**/*.jar" />
+	</path>
+
+	<target name="java2ws">
+		<java classname="org.apache.cxf.tools.java2ws.JavaToWS">
+			<arg value="-frontend" />
+			<arg value="jaxws" />
+			<arg value="-wrapperbean" />
+			<arg value="-wsdl" />
+			<arg value="-soap12" />
+			<arg value="-s" />
+			<arg value="src" />
+			<arg value="-cp" />
+			<arg value="bin" />
+			<arg value="${ws-service-class-name}" />
+			<classpath refid="cxf.classpath" />
+		</java>
+	</target>
+
+	<target name="genWSDL">
+		<exec executable="${jdk-path}/bin/wsgen">
+			<arg value="-cp" />
+			<arg value="./bin" />
+			<arg value="${ws-service-class-name}" />
+			<arg value="-wsdl" />
+		</exec>
+	</target>
+
+</project>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="cxf-ws-template" basedir=".">
+
+	<property name="ws-service-class-name" value="tw.org.itri.smx.ws.CalculatorImpl" />
+	<property name="jdk-path" value="C:/Program Files/Java/jdk1.6.0_11" />
+
+	<path id="cxf.classpath">
+		<fileset dir="lib" includes="**/*.jar" />
+	</path>
+
+	<target name="gen-secrete-key">
+		<exec executable="${jdk-path}/bin/keytool">
+			<arg value="-genseckey" />
+			<arg value="-keyalg" />
+			<arg value="desede" />
+			<arg value="-storetype" />
+			<arg value="JCEKS" />
+			<arg value="-keystore" />
+			<arg value="sym.jceks" />
+			<arg value="-storepass" />
+			<arg value="itri2011" />
+		</exec>
+	</target>
+
+	<target name="list-secrete-key">
+		<exec executable="${jdk-path}/bin/keytool">
+			<arg value="-list" />
+			<arg value="-storetype" />
+			<arg value="JCEKS" />
+			<arg value="-keystore" />
+			<arg value="sym.jceks" />
+			<arg value="-storepass" />
+			<arg value="itri2011" />
+		</exec>
+	</target>
+
+	<target name="selfsign">
+		<exec executable="${jdk-path}/bin/keytool">
+			<arg value="-selfcert" />
+			<arg value="-alias" />
+			<arg value="itrikey" />
+			<arg value="-keystore" />
+			<arg value="asym.jks" />
+			<arg value="-storepass" />
+			<arg value="itri2011" />
+		</exec>
+	</target>
+
+</project>

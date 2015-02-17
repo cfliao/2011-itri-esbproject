@@ -1,0 +1,1 @@
+<rest url="http://localhost:8192" path="/adder/add/1/2" />

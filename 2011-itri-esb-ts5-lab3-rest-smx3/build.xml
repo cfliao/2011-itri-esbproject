@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<project name="servicemix-template" basedir="." default="jbi">
+
+	<!--SMX3-->
+	<property name="smx-dir" value="D:/workspace-servicemix/apache-servicemix-3.3.2" />
+	<property name="deploy-dir" value="${smx-dir}/hotdeploy" />
+
+	<!--SMX4-->
+	<!--
+		<property name="smx-dir" value="D:/servicemix-workspace/apache-servicemix-4.2.0" />
+		<property name="deploy-dir" value="${smx-dir}/deploy" />
+		-->
+
+	<property name="app-name" value="ts5-lab3" />
+	<property name="sa-name" value="ts5-lab3" />
+	<property name="su-name1" value="jsr181-su" />
+
+	<target name="jbi" depends="clean, ${su-name1}">
+		<jar destfile="dist/${sa-name}.zip">
+			<fileset file="dist/${su-name1}.zip" />
+			<metainf file="resources/jbi.xml" />
+			<manifest>
+				<attribute name="Bundle-Name" value="${name}" />
+				<attribute name="Bundle-SymbolicName" value="org.itri.${name}" />
+				<attribute name="Bundle-Version" value="0.0.1" />
+			</manifest>
+		</jar>
+	</target>
+
+	<target name="${su-name1}">
+		<jar destfile="dist/${su-name1}.zip">
+			<fileset dir="bin" includes="**/*.*" />
+			<fileset dir="resources/${su-name1}" />
+		</jar>
+	</target>
+	
+	<target name="clean">
+		<mkdir dir="dist" />
+		<delete failonerror="true" includeEmptyDirs="true">
+			<fileset dir="dist">
+				<include name="**/*" />
+			</fileset>
+		</delete>
+		<delete failonerror="false" includeEmptyDirs="true" file="${deploy-dir}/${sa-name}.zip" />
+	</target>
+
+	<target name="deploy" depends="jbi">
+		<delete failonerror="false" includeEmptyDirs="true" file="${deploy-dir}/${sa-name}.zip" />
+		<copy todir="${deploy-dir}">
+			<fileset file="dist/${sa-name}.zip" />
+		</copy>
+	</target>
+
+</project>

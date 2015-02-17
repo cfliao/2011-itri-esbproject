@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jbi xmlns="http://java.sun.com/xml/ns/jbi" version="1.0">
+	<service-assembly>
+		<identification>
+			<name>TS2 Example 9</name>
+		</identification>
+		<service-unit>
+			<identification>
+				<name>SU-FILE</name>
+			</identification>
+			<target>
+				<artifacts-zip>file-su.zip</artifacts-zip>
+				<component-name>servicemix-file</component-name>
+			</target>
+		</service-unit>
+		<service-unit>
+			<identification>
+				<name>SU-ODE</name>
+			</identification>
+			<target>
+				<artifacts-zip>ode-su.zip</artifacts-zip>
+				<component-name>OdeBpelEngine</component-name>
+			</target>
+		</service-unit>
+		<service-unit>
+			<identification>
+				<name>SU-EIP</name>
+			</identification>
+			<target>
+				<artifacts-zip>eip-su.zip</artifacts-zip>
+				<component-name>servicemix-eip</component-name>
+			</target>
+		</service-unit>
+	</service-assembly>
+</jbi>

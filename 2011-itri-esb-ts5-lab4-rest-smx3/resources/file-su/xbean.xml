@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns:f="http://servicemix.apache.org/file/1.0"
+	xmlns:sm="http://servicemix.apache.org/config/1.0"
+	xmlns:itri="http://www.itri.org.tw/smx"
+	xmlns:ws="http://ws.smx.itri.org.tw/"
+	>
+
+	<f:poller
+		service="itri:filepoller"
+		endpoint="endpoint"
+		file="file:inbox"
+		targetService="itri:camelPipeline"
+		period="2000" />
+
+	<f:sender
+		service="itri:filesender"
+		endpoint="endpoint"
+		directory="file:outbox"
+		overwrite="true" />
+
+</beans>

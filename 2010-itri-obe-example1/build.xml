@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<project name="servicemix-template" basedir="." default="jbi">
+
+	<!--SMX3-->
+	<property name="smx-dir" value="D:/workspace-servicemix/apache-servicemix-3.3.2" />
+	<property name="deploy-dir" value="${smx-dir}/hotdeploy" />
+
+	<property name="app-name" value="ode-example" />
+	<property name="sa-name" value="ode-example" />
+	<property name="su-name1" value="file-su" />
+	<property name="su-name2" value="ode-su" />
+	<property name="su-name3" value="eip-su" />
+
+	<target name="jbi" depends="clean, ${su-name1}, ${su-name2}, ${su-name3}">
+		<jar destfile="dist/${sa-name}.zip">
+			<fileset file="dist/${su-name1}.zip" />
+			<fileset file="dist/${su-name2}.zip" />
+			<fileset file="dist/${su-name3}.zip" />
+			<metainf file="resources/jbi.xml" />
+			<manifest>
+				<attribute name="Bundle-Name" value="${name}" />
+				<attribute name="Bundle-SymbolicName" value="org.itri.${name}" />
+				<attribute name="Bundle-Version" value="0.0.1" />
+			</manifest>
+		</jar>
+	</target>
+
+	<target name="${su-name1}">
+		<jar destfile="dist/${su-name1}.zip">
+			<fileset dir="resources/${su-name1}" />
+			<metainf file="resources/${su-name1}/jbi.xml" />
+		</jar>
+	</target>
+
+	<target name="${su-name2}">
+		<jar destfile="dist/${su-name2}.zip">
+			<fileset dir="resources/${su-name2}" />
+			<metainf file="resources/${su-name2}/jbi.xml" />
+		</jar>
+	</target>
+
+	<target name="${su-name3}">
+		<jar destfile="dist/${su-name3}.zip">
+			<fileset dir="resources/${su-name3}" />
+			<metainf file="resources/${su-name3}/jbi.xml" />
+		</jar>
+	</target>
+
+	<target name="clean">
+		<mkdir dir="dist" />
+		<delete failonerror="true" includeEmptyDirs="true">
+			<fileset dir="dist">
+				<include name="**/*" />
+			</fileset>
+		</delete>
+	</target>
+
+	<target name="deploy" depends="jbi">
+		<delete failonerror="false" includeEmptyDirs="true" file="${deploy-dir}/${sa-name}.zip" />
+		<copy todir="${deploy-dir}">
+			<fileset file="dist/${sa-name}.zip" />
+		</copy>
+	</target>
+
+</project>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jbi
+	xmlns="http://java.sun.com/xml/ns/jbi"
+	version="1.0">
+	<service-assembly>
+		<identification>
+			<name>TS5-Lab3</name>
+		</identification>
+		<service-unit>
+			<identification>
+				<name>SU-JSR181</name>
+			</identification>
+			<target>
+				<artifacts-zip>jsr181-su.zip</artifacts-zip>
+				<component-name>servicemix-jsr181</component-name>
+			</target>
+		</service-unit>
+	</service-assembly>
+</jbi>

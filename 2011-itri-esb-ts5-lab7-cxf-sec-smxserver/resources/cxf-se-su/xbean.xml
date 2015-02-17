@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans
+	xmlns:cxfse="http://servicemix.apache.org/cxfse/1.0"
+	xmlns:itri="http://www.itri.org.tw/smx">
+
+	<classpath>
+		<location>.</location>
+	</classpath>
+
+	<cxfse:endpoint>
+		<cxfse:pojo>
+			<bean
+				class="tw.org.itri.smx.ws.CalculatorImpl" />
+		</cxfse:pojo>
+	</cxfse:endpoint>
+
+</beans>
