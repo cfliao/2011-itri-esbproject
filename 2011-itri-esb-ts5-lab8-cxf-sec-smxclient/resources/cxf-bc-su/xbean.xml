@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans
+	xmlns:cxfbc="http://servicemix.apache.org/cxfbc/1.0"
+	xmlns:itri="http://www.itri.org.tw/smx"
+	xmlns:ws="http://ws.smx.itri.org.tw/">
+
+	<cxfbc:provider
+		wsdl="http://localhost:8192/Adder?wsdl"
+		service="ws:CalculatorImplService">
+
+		<cxfbc:inInterceptors>
+			<ref
+				bean="login" />
+			<ref
+				bean="saajin" />
+			<ref
+				bean="wss4jin" />
+		</cxfbc:inInterceptors>
+
+		<cxfbc:outInterceptors>
+			<ref
+				bean="saajout" />
+			<ref
+				bean="wss4jout" />
+			<ref
+				bean="logout" />
+		</cxfbc:outInterceptors>
+	</cxfbc:provider>
+
+	<bean
+		id="saajin"
+		class="org.apache.cxf.binding.soap.saaj.SAAJInInterceptor" />
+
+	<bean
+		id="saajout"
+		class="org.apache.cxf.binding.soap.saaj.SAAJOutInterceptor" />
+
+	<bean
+		id="logout"
+		class="org.apache.cxf.interceptor.LoggingOutInterceptor" />
+
+	<bean
+		id="login"
+		class="org.apache.cxf.interceptor.LoggingInInterceptor" />
+
+	<bean
+		id="wss4jin"
+		class="org.apache.cxf.ws.security.wss4j.WSS4JInInterceptor">
+		<constructor-arg>
+			<map>
+				<entry
+					key="action"
+					value="Signature Encrypt" />
+				<entry
+					key="user"
+					value="clientkey" />
+				<entry
+					key="signaturePropFile"
+					value="client.crypto.properties" />
+				<entry
+					key="encryptionPropFile"
+					value="client.crypto.properties" />
+				<entry
+					key="decryptionPropFile"
+					value="client.crypto.properties" />
+				<entry
+					key="encryptionUser"
+					value="serverkey" />
+				<entry
+					key="passwordCallbackClass"
+					value="tw.org.itri.smx.ws.PasswordCallback" />
+			</map>
+		</constructor-arg>
+	</bean>
+
+	<bean
+		id="wss4jout"
+		class="org.apache.cxf.ws.security.wss4j.WSS4JOutInterceptor">
+		<constructor-arg>
+			<map>
+				<entry
+					key="action"
+					value="Signature Encrypt" />
+				<entry
+					key="user"
+					value="clientkey" />
+				<entry
+					key="signaturePropFile"
+					value="client.crypto.properties" />
+				<entry
+					key="encryptionPropFile"
+					value="client.crypto.properties" />
+				<entry
+					key="decryptionPropFile"
+					value="client.crypto.properties" />
+				<entry
+					key="encryptionUser"
+					value="serverkey" />
+				<entry
+					key="passwordCallbackClass"
+					value="tw.org.itri.smx.ws.PasswordCallback" />
+			</map>
+		</constructor-arg>
+	</bean>
+</beans>

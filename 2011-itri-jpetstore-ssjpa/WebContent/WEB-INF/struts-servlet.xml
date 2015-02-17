@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+
+	<bean name="/shop/index"
+		class="jpetstore.web.struts.DoNothingAction">
+		<property name="petStore">
+			<ref bean="petStore" />
+		</property>
+	</bean>
+
+	<bean name="/shop/signon"
+		class="jpetstore.web.struts.SignonAction">
+		<property name="petStore">
+			<ref bean="petStore" />
+		</property>
+	</bean>
+
+	<bean name="/shop/addItemToCart"
+		class="jpetstore.web.struts.AddItemToCartAction">
+		<property name="petStore">
+			<ref bean="petStore" />
+		</property>
+	</bean>
+
+	<bean name="/shop/checkout"
+		class="jpetstore.web.struts.ViewCartAction">
+		<property name="petStore">
+			<ref bean="petStore" />
+		</property>
+	</bean>
+
+	<bean name="/shop/editAccount"
+		class="jpetstore.web.struts.EditAccountAction">
+		<property name="petStore">
+			<ref bean="petStore" />
+		</property>
+	</bean>
+
+	<bean name="/shop/editAccountForm"
+		class="jpetstore.web.struts.EditAccountFormAction">
+		<property name="petStore">
+			<ref bean="petStore" />
+		</property>
+	</bean>
+
+	<bean name="/shop/listOrders"
+		class="jpetstore.web.struts.ListOrdersAction">
+		<property name="petStore">
+			<ref bean="petStore" />
+		</property>
+	</bean>
+
+	<bean name="/shop/newAccount"
+		class="jpetstore.web.struts.NewAccountAction">
+		<property name="petStore">
+			<ref bean="petStore" />
+		</property>
+	</bean>
+
+	<bean name="/shop/newAccountForm"
+		class="jpetstore.web.struts.NewAccountFormAction">
+		<property name="petStore">
+			<ref bean="petStore" />
+		</property>
+	</bean>
+
+	<bean name="/shop/newOrder"
+		class="jpetstore.web.struts.NewOrderAction">
+		<property name="petStore">
+			<ref bean="petStore" />
+		</property>
+	</bean>
+
+	<bean name="/shop/newOrderForm"
+		class="jpetstore.web.struts.NewOrderFormAction">
+		<property name="petStore">
+			<ref bean="petStore" />
+		</property>
+	</bean>
+
+	<bean name="/shop/removeItemFromCart"
+		class="jpetstore.web.struts.RemoveItemFromCartAction">
+		<property name="petStore">
+			<ref bean="petStore" />
+		</property>
+	</bean>
+
+	<bean name="/shop/searchProducts"
+		class="jpetstore.web.struts.SearchProductsAction">
+		<property name="petStore">
+			<ref bean="petStore" />
+		</property>
+	</bean>
+
+	<bean name="/shop/signonForm"
+		class="jpetstore.web.struts.DoNothingAction">
+		<property name="petStore">
+			<ref bean="petStore" />
+		</property>
+	</bean>
+
+	<bean name="/shop/updateCartQuantities"
+		class="jpetstore.web.struts.UpdateCartQuantitiesAction">
+		<property name="petStore">
+			<ref bean="petStore" />
+		</property>
+	</bean>
+
+	<bean name="/shop/viewCart"
+		class="jpetstore.web.struts.ViewCartAction">
+		<property name="petStore">
+			<ref bean="petStore" />
+		</property>
+	</bean>
+
+	<bean name="/shop/viewCategory"
+		class="jpetstore.web.struts.ViewCategoryAction">
+		<property name="petStore">
+			<ref bean="petStore" />
+		</property>
+	</bean>
+
+	<bean name="/shop/viewItem"
+		class="jpetstore.web.struts.ViewItemAction">
+		<property name="petStore">
+			<ref bean="petStore" />
+		</property>
+	</bean>
+
+	<bean name="/shop/viewOrder"
+		class="jpetstore.web.struts.ViewOrderAction">
+		<property name="petStore">
+			<ref bean="petStore" />
+		</property>
+	</bean>
+
+	<bean name="/shop/viewProduct"
+		class="jpetstore.web.struts.ViewProductAction">
+		<property name="petStore">
+			<ref bean="petStore" />
+		</property>
+	</bean>
+</beans>

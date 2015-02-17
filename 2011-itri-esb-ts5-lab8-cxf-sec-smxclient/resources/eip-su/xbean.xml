@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:eip="http://servicemix.apache.org/eip/1.0"
+       xmlns:itri="http://www.itri.org.tw/smx"
+       xmlns:ws="http://ws.smx.itri.org.tw/">
+
+	<eip:pipeline service="itri:eip" endpoint="endpoint">
+  		<eip:transformer>
+    		<eip:exchange-target service="ws:CalculatorImplService" />
+  		</eip:transformer>
+  		<eip:target>
+    		<eip:exchange-target service="itri:filesender" />
+  		</eip:target>
+	</eip:pipeline>
+	
+</beans>

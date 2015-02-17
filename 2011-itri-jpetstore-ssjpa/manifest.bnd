@@ -1,0 +1,6 @@
+Bundle-Name: attentivehome-cpn
+Bundle-SymbolicName: org.attentivehome.cpn.core
+Export-Package: org.attentivehome.cpn.examples, \
+                org.attentivehome.cpn.mom, \
+                org.attentivehome.cpn.node, \
+                org.attentivehome.cpn.utils
